@@ -24,7 +24,7 @@ app.use("/api/order/",orderRoutes)
 app.use("/api/user/",UserRoutes)
 
 app.use(cors({
-    origin:"http://localhost:5173/"
+    origin:["http://localhost:5173"]
 }))
 
 app.listen(process.env.port,()=>{
