@@ -4,7 +4,7 @@ const { protectedRoutes } = require("../middlewares/authmiddleware")
 const { roleAllow } = require("../middlewares/roleMiddleWare")
 const router=express.Router()
 
-router.get("/product",getProducts)
+router.get("/product",protectedRoutes,roleAllow("admin"),getProducts)
 router.get("/:id",getSingleProduct)
 router.post("/addProduct",protectedRoutes,roleAllow("admin"),addProduct)
 router.put("/updateProduct/:id",protectedRoutes,roleAllow("admin"),updateProduct)
