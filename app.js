@@ -13,9 +13,10 @@ const{connectDB}=require("./configue/db")
 const cors=require('cors')
 connectDB()
 
-
-
-
+app.use(cors({
+    origin:["http://localhost:5173"],
+     methods: ["GET", "POST", "PUT", "DELETE"]
+}))
 
 app.use("/api/auth",AuthenticationRoutes)
 app.use("/api/product/",ProductRoutes)
@@ -23,9 +24,7 @@ app.use("/api/cart/",CartRoutes)
 app.use("/api/order/",orderRoutes)
 app.use("/api/user/",UserRoutes)
 
-app.use(cors({
-    origin:["http://localhost:5173"]
-}))
+
 
 app.listen(process.env.port,()=>{
     console.log('server running at ',process.env.port)
